@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <!-- 字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #36384D;
+        }
+
+        .main-container {
+            position: absolute;
+            min-width: 900px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 30px;
+        }
+
+        .container-flex {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .left-area {
+            width: 55%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-content {
+            height: 593px;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-content h1 {
+            font-size: 55px;
+            margin-top: 0px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #36384D;
+        }
+
+        .left-content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            color: #36384D;
+            line-height: 25px;
+        }
+
+        .left-content ul {
+            list-style: none;
+        }
+
+        .left-content li {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #36384D;
+            position: relative;
+        }
+
+        .left-content li::before {
+            content: '';
+            background-image: url('../assets/images/icon-list.svg');
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: -40px;
+        }
+
+        .left-content label {
+            width: 100%;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .left-content label .errorArea {
+            position: absolute;
+            right: 0;
+            top: -30px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #d4746f;
+            display: none;
+        }
+        
+        .left-content input {
+            height: 50px;
+            width: 100%;
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-indent: 20px;
+            border: 1px solid #E2E2E2;
+            font-size: 14px;
+        }
+
+        .left-content label::before {
+            content: 'Email address';
+            width: 150px;
+            height: 20px;
+            position: absolute;
+            top: -30px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .left-content button {
+            margin-top: 30px;
+            height: 60px;
+            background-color: #232742;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            border: 1px solid #E2E2E2;
+        }
+
+        .left-content button:hover {
+            background: linear-gradient(
+                to right,
+                #FE5278,
+                #FF693E
+            );
+        }
+
+        .right-area {
+            width: 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .picture-area {
+            width: 100%;
+            height: 100%;
+            min-width: 400px;
+            min-height: 593px;
+            background-image: url('/assets/images/illustration-sign-up-desktop.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        @media screen and (max-width:768px){
+            .main-container {
+                min-width: 0;
+                border-radius: 0px;
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: translate(0, 0);
+            }
+
+            .container-flex {
+                flex-direction: column-reverse;
+            }
+
+            .left-area {
+                width: 100%;
+                margin-top: -60px;
+                padding: 0 0 30px 0;
+            }
+
+            .left-content h1 {
+                font-size: 48px;
+            }
+
+            .right-area {
+                width: 100%;
+                padding: 0;
+            }
+
+            .right-area .picture-area {
+                background-image: url('/assets/images/illustration-sign-up-mobile.svg');
+                min-height: 375px;
+                min-width: 284px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="container-flex">
+            <div class="left-area">
+                <div class="left-content">
+                    <h1>Stay updated!</h1>
+                    <p>Join 60,000+ product managers receiving monthly updates on:</p>
+                    <ul>
+                        <li>Product discovery and building what matters</li>
+                        <li>Measuring to ensure updates are a success</li>
+                        <li>And much more!</li>
+                    </ul>
+                    <label>
+                        <div class='errorArea'>Valid email required</div>
+                        <input type="text" placeholder='email@company.com' id="inputArea">
+                    </label>
+                    <button id="buttonArea" onclick="checkInput()">Subscribe to monthly newsletter</button>
+                </div>
+            </div>
+            <div class='right-area'>
+                <div class="picture-area"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function checkInput(){
+        let input = document.querySelector('#inputArea');
+        let error = document.querySelector('.errorArea');
+        let email = input.value;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(emailPattern.test(email)){
+            localStorage.setItem('email', email);
+            console.log(email)  
+            window.location.href = 'success.html'
+        } else {
+            error.style.display = 'block';
+            input.style.backgroundColor = '#FFE8E6';
+            input.style.borderColor = '#d4746f';
+            input.style.color = '#d4746f';
+        }
+    }
+</script>
+</html>
